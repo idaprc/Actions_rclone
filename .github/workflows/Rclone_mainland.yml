@@ -1,8 +1,7 @@
-name: Rclone_01 O Sync to P
+name: Rclone Mainland
 
 on:
   workflow_dispatch:
-
 
 jobs:
   build:
@@ -36,7 +35,7 @@ jobs:
           {
           random_time=$(($RANDOM % $1))
           echo "等待 ${random_time} 分钟后开始同步"
-          for((i=1;i<=${random_time};i++));  
+          for((i=1;i<=${random_time};i++));
           do
           echo "倒计时 $[${random_time}-$i] 分钟"
           sleep 1m
@@ -46,27 +45,8 @@ jobs:
           delay 1
           # 更改时区
           sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-          
-          echo "开始同步【O_01】至【P_01】"
-          rclone sync O:/"01 电影" P:/"01 电影" -v
-          echo "【O_01】已同步至【P_01】"
-          
-          echo "开始同步【O_02】至【P_02】"
-          rclone sync O:/"02 剧集" P:/"02 剧集" -v
-          echo "【O_02】已同步至【P_02】"
-          
-          echo "开始同步【O_03】至【P_03】"
-          rclone sync O:/"03 音乐" P:/"03 音乐" -v
-          echo "【O_03】已同步至【P_03】"
-          
-          echo "开始同步【O_06】至【P_06】"
-          rclone sync O:/"06 UHD" P:/"06 UHD" -v
-          echo "【O_06】已同步至【P_06】"
-          
-          echo "开始同步【O_04】至【P_04】"
-          rclone sync O:/"04 感官" P:/"04 感官" -v
-          echo "【O_04】已同步至【P_04】"
-          
-          echo "开始同步【O_05】至【P_05】"
-          rclone sync O:/"05 听读" P:/"05 听读" -v
-          echo "【O_05】已同步至【P_05】"
+
+          echo "开始同步 Mainland"
+          rclone copy gd1:/"天朝" od3:/"天朝" -v
+
+
